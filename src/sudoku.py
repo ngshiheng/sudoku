@@ -26,6 +26,7 @@ class Sudoku:
 
     def print_board(self) -> None:
         """Prints a Sudoku board"""
+        print("-" * self.BOARD_SIZE * 3)
         for i in range(self.BOARD_SIZE):
             print(self.board[i])
 
@@ -64,6 +65,8 @@ class Sudoku:
 
     def _backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function for self.solve()"""
+        self.print_board()
+
         if self.board[i][j] != 0:
             j += 1
             if j == self.BOARD_SIZE:
@@ -95,6 +98,5 @@ class Sudoku:
 
 if __name__ == "__main__":
     sudoku = Sudoku(EXAMPLE_BOARD)
-    sudoku.print_board()
     sudoku.solve()
     sudoku.print_board()
