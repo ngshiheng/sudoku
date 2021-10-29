@@ -32,6 +32,7 @@ def main():
     sudoku.show_grid()
 
     put_button("Solve", onclick=sudoku.solve_grid)
+    put_button("Reset", onclick=sudoku.reset_grid)
 
 
 if __name__ == "__main__":

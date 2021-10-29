@@ -128,16 +128,24 @@ class TestSudoku(unittest.TestCase):
             },
         ]
 
-    def test_valid_grid(self) -> None:
-        """Test the validate_grid method"""
+    def test_validate_grid(self) -> None:
         for grid in self.grid_test_cases:
             sudoku = Sudoku(grid["given"])
             got = sudoku.validate_grid()
             self.assertTrue(got)
 
     def test_solve_grid(self) -> None:
-        """Test the solve_grid method"""
         for grid in self.grid_test_cases:
             sudoku = Sudoku(grid["given"])
             got = sudoku.solve_grid()
-            self.assertEqual(got, grid["expected"])
+            self.assertListEqual(got, grid["expected"])
+            self.assertListEqual(sudoku.grid, grid["expected"])
+            self.assertIs(sudoku.grid, got)
+
+    def test_reset_grid(self) -> None:
+        for grid in self.grid_test_cases:
+            sudoku = Sudoku(grid["given"])
+            sudoku.solve_grid()
+            sudoku.reset_grid()
+            self.assertListEqual(sudoku.grid, sudoku.original_grid)
+            self.assertIsNot(sudoku.grid, sudoku.original_grid)

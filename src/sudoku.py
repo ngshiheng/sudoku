@@ -19,11 +19,18 @@ class Sudoku:
         self.col_check = [set() for _ in range(self.GRID_SIZE)]
         self.subgrid_check = [[set() for _ in range(self.SUBGRID_SIZE)] for _ in range(self.SUBGRID_SIZE)]
 
+        self.original_grid = copy.deepcopy(grid)
+
     def show_grid(self) -> None:
         """Shows the current state of the Sudoku grid to stdout"""
         print("-" * self.GRID_SIZE * 3)
         for i in range(self.GRID_SIZE):
             print(self.grid[i])
+
+    def reset_grid(self) -> List[List[int]]:
+        """Resets the Sudoku grid to its original state, creates a new copy from the original grid"""
+        self.grid = copy.deepcopy(self.original_grid)
+        return self.grid
 
     def generate_grid(self) -> None:
         """Generates a random valid Sudoku grid"""
@@ -108,6 +115,16 @@ class PyWebIOSudoku(Sudoku):
     def show_grid(self) -> None:
         """Shows the current state of the Sudoku grid to the browser"""
         put_table(self.pywebio_grid)
+
+    def reset_grid(self) -> List[List[int]]:
+        """Resets the Sudoku grid to its original state, creates a new copy from the original grid"""
+        super().reset_grid()
+
+        for i in range(self.GRID_SIZE):
+            for j in range(self.GRID_SIZE):
+                exec(f"self.grid_{i}{j}.reset(self.grid[i][j])")
+
+        return self.grid
 
     def _backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function to help solve the Sudoku
