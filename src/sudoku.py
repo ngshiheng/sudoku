@@ -1,7 +1,7 @@
 import copy
 from typing import List
 
-from pywebio.output import output, put_table  # noqa
+from pywebio.output import output, put_table, style  # noqa
 
 
 class Sudoku:
@@ -111,7 +111,11 @@ class PyWebIOSudoku(Sudoku):
 
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
-                exec(f"self.grid_{i}{j} = output(grid[i][j])")
+                if self.pywebio_grid[i][j] == self.BLANK_CELL:
+                    exec(f"self.grid_{i}{j} = style(output(grid[i][j]), 'color:red; font-weight: bold')")
+                else:
+                    exec(f"self.grid_{i}{j} = style(output(grid[i][j]), 'font-weight: bold')")
+
                 exec(f"self.pywebio_grid[{i}][{j}] = self.grid_{i}{j}")
 
         super().__init__(grid)
