@@ -1,22 +1,55 @@
 from pywebio import start_server
-from pywebio.output import put_button, put_markdown
+from pywebio.output import put_buttons, put_markdown
 
 from src.sudoku import PyWebIOSudoku
 
-PAGE_DESCRIPTION = r"""
-# Sudoku
+INTRODUCTION = r"""
+# Sudoku, 数独
 
-> Sudoku browser game built using Python
+A popular Japanese puzzle game based on the logical placement of digits.
 
-1. Ability to generate a random and valid Sudoku board
-2. A button that solves the generated board using backtracking
+Sudoku doesn’t require any calculation nor special math skills.
+
+## Motivation
+
+To demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works, visually. You may find the source code [here](https://github.com/ngshiheng/sudoku).
+
+## Demo
+
+"""
+
+DETAILS = r"""
+## Approach
+
+- Before assigning a digit to a cell, we should check whether it is safe to assign.
+- Check that the same digit is not present in the current row, current column, and current 3x3 subgrid.
+- After checking for safety, assign the digit, and recursively check whether this assignment leads to a solution or not.
+- If the assignment doesn’t lead to a solution, then try the next digit for the current empty cell.
+- And if none of the digits (1 to 9) leads to a solution, return `False`.
+- We return `True` if we have reached gone through the entire grid.
+
+## How to play
+
+The goal of Sudoku is to fill in a 9×9 grid with digits so that each column, row, and 3×3 section contain the digits between 1 to 9.
+
+At the beginning of the game, the 9×9 grid will have some of the squares filled in.
+
+Your job is to use logic to fill in the missing digits and complete the grid.
+
+## Rules
+
+A move is **incorrect** if:
+
+- Any row contains more than one of the same digit from 1 to 9
+- Any column contains more than one of the same digit from 1 to 9
+- Any 3×3 grid contains more than one of the same digit from 1 to 9
 
 """
 
 
 def main():
-    """Sudoku"""
-    put_markdown("# Sudoku")
+    """Sudoku Solver"""
+    put_markdown(INTRODUCTION)
     grid = [
         [5, 3, 0, 0, 7, 0, 0, 0, 0],
         [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -31,8 +64,17 @@ def main():
     sudoku = PyWebIOSudoku(grid)
     sudoku.show_grid()
 
-    put_button("Solve", onclick=sudoku.solve_grid)
-    put_button("Reset", onclick=sudoku.reset_grid)
+    put_buttons(
+        [
+            dict(label="Solve", value="Solve", color="primary"),
+            dict(label="Reset", value="Reset", color="warning"),
+        ], onclick=[
+            sudoku.solve_grid,
+            sudoku.reset_grid,
+        ],
+    )
+
+    put_markdown(DETAILS)
 
 
 if __name__ == "__main__":

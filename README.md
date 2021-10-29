@@ -1,6 +1,6 @@
 # Sudoku
 
-> Sudoku browser game built using Python
+> A web-based Sudoku solver built using Python and Python only
 
 ## Goals
 
@@ -37,7 +37,7 @@ Some example useful invocations:
 
 ## Usage
 
-To run the game locally
+To run locally on your browser
 
 ```sh
 poetry run python3 main.py --debug=True --port=8080
@@ -45,6 +45,22 @@ poetry run python3 main.py --debug=True --port=8080
 
 ---
 
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### Steps
+
+1. Fork this
+2. Create your feature branch (git checkout -b feature/fooBar)
+3. Please make sure you have installed the pre-commit hook and make sure it passes all the lint and format check
+4. Commit your changes (git commit -am 'Add some fooBar')
+5. Push to the branch (git push origin feature/fooBar)
+6. Create a new Pull Request
+
+---
+
 ## References
 
--   https://stackoverflow.com/questions/45471152/how-to-create-a-sudoku-puzzle-in-python
+-   https://leetcode.com/problems/sudoku-solver/
+-   https://leetcode.com/problems/valid-sudoku/
