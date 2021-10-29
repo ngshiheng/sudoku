@@ -8,11 +8,6 @@
 
 <br />
 
-## Goals
-
-1. Ability to generate a random and valid Sudoku board
-2. A button that solves the generated board using backtracking
-
 ## Development
 
 ### Installation
@@ -43,11 +38,13 @@ Some example useful invocations:
 
 ## Usage
 
-To run locally on your browser
+To run locally on your browser:
 
 ```sh
 poetry run python3 main.py --debug=True --port=8080
 ```
+
+Then, visit `http://localhost:8080` on your browser.
 
 ---
 
