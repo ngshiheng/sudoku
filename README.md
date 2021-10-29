@@ -51,8 +51,12 @@ Then, visit `http://localhost:8080` on your browser.
 ## Deployment
 
 ```sh
+# To deploy app configuration
 gcloud init
 gcloud app deploy app.yml --project xxx
+
+# To stream logs
+gcloud app logs tail -s default
 ```
 
 ---
