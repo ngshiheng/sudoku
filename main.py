@@ -1,5 +1,7 @@
 from pywebio import start_server
-from pywebio.output import put_markdown, put_table
+from pywebio.output import put_markdown
+
+from src.sudoku import PyWebIOSudoku
 
 PAGE_DESCRIPTION = r"""
 # Sudoku
@@ -12,9 +14,10 @@ PAGE_DESCRIPTION = r"""
 """
 
 
-def show_board():
-    """Renders the Sudoku board"""
-    EXAMPLE_BOARD = [
+def main():
+    """Sudoku"""
+    put_markdown("# Sudoku")
+    grid = [
         [5, 3, 0, 0, 7, 0, 0, 0, 0],
         [6, 0, 0, 1, 9, 5, 0, 0, 0],
         [0, 9, 8, 0, 0, 0, 0, 6, 0],
@@ -25,14 +28,9 @@ def show_board():
         [0, 0, 0, 4, 1, 9, 0, 0, 5],
         [0, 0, 0, 0, 8, 0, 0, 7, 9],
     ]
-
-    put_table(EXAMPLE_BOARD)
-
-
-def main():
-    """A game of Sudoku"""
-    put_markdown(PAGE_DESCRIPTION)
-    show_board()
+    sudoku = PyWebIOSudoku(grid)
+    sudoku.show_grid()
+    sudoku.solve_grid()
 
 
 if __name__ == "__main__":
