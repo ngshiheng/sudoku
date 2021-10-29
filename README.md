@@ -31,6 +31,7 @@ Some example useful invocations:
 
 -   `pre-commit install`: Default invocation. Installs the pre-commit script alongside any existing git hooks.
 -   `pre-commit install --install-hooks --overwrite`: Idempotently replaces existing git hook scripts with pre-commit, and also installs hook environments.
+-   `pre-commit run`: Run hooks.
 
 ---
 

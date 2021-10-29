@@ -31,3 +31,12 @@ repos:
       rev: "v2.1.0"
       hooks:
           - id: add-trailing-comma
+
+    - repo: local
+      hooks:
+          - id: unittest
+            name: Unittest
+            entry: poetry run python3 -m unittest
+            always_run: true
+            pass_filenames: false
+            language: system
