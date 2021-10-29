@@ -5,7 +5,7 @@ from pywebio.output import output, put_table  # noqa
 
 
 class Sudoku:
-    """A Sudoku object with custom methods
+    """A Sudoku puzzle object
 
     https://en.wikipedia.org/wiki/Sudoku
     """
@@ -14,12 +14,12 @@ class Sudoku:
     SUBGRID_SIZE = GRID_SIZE // 3
 
     def __init__(self, grid: List[List[int]]) -> None:
-        self.grid = grid
+        self.grid = copy.deepcopy(grid)
+        self.original_grid = copy.deepcopy(grid)
+
         self.row_check = [set() for _ in range(self.GRID_SIZE)]
         self.col_check = [set() for _ in range(self.GRID_SIZE)]
         self.subgrid_check = [[set() for _ in range(self.SUBGRID_SIZE)] for _ in range(self.SUBGRID_SIZE)]
-
-        self.original_grid = copy.deepcopy(grid)
 
     def show_grid(self) -> None:
         """Shows the current state of the Sudoku grid to stdout"""
@@ -30,11 +30,15 @@ class Sudoku:
     def reset_grid(self) -> List[List[int]]:
         """Resets the Sudoku grid to its original state, creates a new copy from the original grid"""
         self.grid = copy.deepcopy(self.original_grid)
+
+        self.row_check = [set() for _ in range(self.GRID_SIZE)]
+        self.col_check = [set() for _ in range(self.GRID_SIZE)]
+        self.subgrid_check = [[set() for _ in range(self.SUBGRID_SIZE)] for _ in range(self.SUBGRID_SIZE)]
         return self.grid
 
     def generate_grid(self) -> None:
         """Generates a random valid Sudoku grid"""
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def validate_grid(self) -> bool:
         """Validates a Sudoku grid"""
@@ -68,7 +72,7 @@ class Sudoku:
                 if self.grid[i][j] == self.BLANK_CELL and self._backtrack(i, j):
                     return self.grid
 
-        raise ValueError("Unexpected error")
+        raise ValueError("Unable to solve Sudoku puzzle")
 
     def _backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function to help solve the Sudoku"""

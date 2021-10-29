@@ -149,3 +149,11 @@ class TestSudoku(unittest.TestCase):
             sudoku.reset_grid()
             self.assertListEqual(sudoku.grid, sudoku.original_grid)
             self.assertIsNot(sudoku.grid, sudoku.original_grid)
+
+    def test_solve_sudoku_after_reset_grid_does_not_raise_any_exceptions(self) -> None:
+        for grid in self.grid_test_cases:
+            sudoku = Sudoku(grid["given"])
+            sudoku.solve_grid()
+            sudoku.reset_grid()
+            sudoku.solve_grid()
+            self.assertListEqual(sudoku.grid, grid["expected"])
