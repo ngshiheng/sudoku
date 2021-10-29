@@ -106,11 +106,14 @@ class PyWebIOSudoku(Sudoku):
         super().__init__(grid)
 
     def show_grid(self) -> None:
-        """Shows the current state of the Sudoku grid to PyWebIO"""
+        """Shows the current state of the Sudoku grid to the browser"""
         put_table(self.pywebio_grid)
 
     def _backtrack(self, i: int, j: int) -> bool:
-        """A backtracking helper function to help solve the Sudoku"""
+        """A backtracking helper function to help solve the Sudoku
+
+        This private method mutates and displays the state change of PyWebIO table on the browser
+        """
         if self.grid[i][j] != self.BLANK_CELL:
             j += 1
             if j == self.GRID_SIZE:
@@ -156,6 +159,6 @@ if __name__ == "__main__":
     ]
 
     sudoku = Sudoku(grid)
-    sudoku.print_grid()
+    sudoku.show_grid()
     sudoku.solve_grid()
-    sudoku.print_grid()
+    sudoku.show_grid()

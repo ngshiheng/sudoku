@@ -1,5 +1,5 @@
 from pywebio import start_server
-from pywebio.output import put_markdown
+from pywebio.output import put_button, put_markdown
 
 from src.sudoku import PyWebIOSudoku
 
@@ -30,7 +30,8 @@ def main():
     ]
     sudoku = PyWebIOSudoku(grid)
     sudoku.show_grid()
-    sudoku.solve_grid()
+
+    put_button("Solve", onclick=sudoku.solve_grid)
 
 
 if __name__ == "__main__":
