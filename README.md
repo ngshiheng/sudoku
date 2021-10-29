@@ -1,6 +1,12 @@
-# Sudoku
+<h1 align="center"><strong>Sudoku Solver</strong></h1>
+<h3 align="center">A web-based Sudoku solver built using Python and Python only
+</h3>
 
-> A web-based Sudoku solver built using Python and Python only
+<p align="center">
+  <img width=auto height=auto src="https://media.giphy.com/media/ZJFVjMIFiY9VC5UAom/giphy.gif">
+</p>
+
+<br />
 
 ## Goals
 
