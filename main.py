@@ -1,4 +1,3 @@
-from pywebio import start_server
 from pywebio.output import put_buttons, put_markdown
 
 from src.sudoku import PyWebIOSudoku
@@ -78,4 +77,19 @@ def main():
 
 
 if __name__ == "__main__":
-    start_server(main, debug=True, port=8080, cdn=False)
+    import argparse
+
+    from pywebio import start_server as start_ws_server
+    from pywebio.platform.tornado_http import start_server as start_http_server
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port", help='Run on the given port', type=int, default=8080)
+    parser.add_argument("-d", "--debug", help='Run on debug mode', type=bool, default=False)
+    parser.add_argument("--http", action="store_true", default=False, help='Whether to enable http protocol for communicates')
+
+    args = parser.parse_args()
+
+    if args.http:
+        start_http_server(main, port=args.port, debug=args.debug)
+    else:
+        start_ws_server(main, port=args.port, websocket_ping_interval=30, debug=args.debug)

@@ -48,6 +48,15 @@ Then, visit `http://localhost:8080` on your browser.
 
 ---
 
+## Deployment
+
+```sh
+gcloud init
+gcloud app deploy app.yml --project xxx
+```
+
+---
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -67,3 +76,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 -   https://leetcode.com/problems/sudoku-solver/
 -   https://leetcode.com/problems/valid-sudoku/
+
+```
+
+```
