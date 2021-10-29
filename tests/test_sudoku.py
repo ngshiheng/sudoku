@@ -5,7 +5,7 @@ from src.sudoku import Sudoku
 
 class TestSudoku(unittest.TestCase):
     def setUp(self) -> None:
-        self.BOARD_TEST_CASES = [
+        self.grid_test_cases = [
             {
                 "given": [
                     [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -128,16 +128,16 @@ class TestSudoku(unittest.TestCase):
             },
         ]
 
-    def test_valid_board(self) -> None:
-        """Test the validate_board method"""
-        for board in self.BOARD_TEST_CASES:
-            sudoku = Sudoku(board["given"])
-            got = sudoku.validate_board()
+    def test_valid_grid(self) -> None:
+        """Test the validate_grid method"""
+        for grid in self.grid_test_cases:
+            sudoku = Sudoku(grid["given"])
+            got = sudoku.validate_grid()
             self.assertTrue(got)
 
-    def test_solve_board(self) -> None:
-        """Test the solve_board method"""
-        for board in self.BOARD_TEST_CASES:
-            sudoku = Sudoku(board["given"])
-            got = sudoku.solve_board()
-            self.assertEqual(got, board["expected"])
+    def test_solve_grid(self) -> None:
+        """Test the solve_grid method"""
+        for grid in self.grid_test_cases:
+            sudoku = Sudoku(grid["given"])
+            got = sudoku.solve_grid()
+            self.assertEqual(got, grid["expected"])
