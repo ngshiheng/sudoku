@@ -31,9 +31,11 @@ class PyWebIOSudoku(Sudoku):
         """Overrides the current grid with a brand new valid Sudoku grid"""
         super().generate_grid()
 
+        self.pywebio_grid = copy.deepcopy(self.grid)
+
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
-                exec(f"self.grid_{i}{j}.reset(self.new_grid[i][j])")
+                exec(f"self.grid_{i}{j}.reset(self.grid[i][j])")
 
     def reset_grid(self) -> None:
         """Resets the current grid to its original state"""

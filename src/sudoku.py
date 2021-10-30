@@ -96,11 +96,11 @@ class Sudoku:
 
     def generate_grid(self) -> None:
         """Overrides the current grid with a brand new valid Sudoku grid"""
-        self.new_grid = self.__generate_grid()
+        new_grid = self.__generate_grid()
 
         self.__init_checkers()
-        self.grid = copy.deepcopy(self.new_grid)
-        self.original_grid = copy.deepcopy(self.new_grid)
+        self.grid = copy.deepcopy(new_grid)
+        self.original_grid = copy.deepcopy(new_grid)
 
     def reset_grid(self) -> None:
         """Resets the current grid to its original state"""
