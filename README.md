@@ -50,6 +50,21 @@ Then, visit `http://localhost:8080` on your browser.
 
 ## Deployment
 
+This section is only required if you intend to deploy to [GAE](https://cloud.google.com/appengine).
+
+For reference, do check [this](https://github.com/wang0618/pywebio-in-cloud) out.
+
+### Dependencies
+
+Configure all dependencies you will need for your web service in your `requirements.txt` file.
+
+```sh
+# This command exports the poetry lock file to other formats.
+poetry export -f requirements.txt --output requirements.txt
+```
+
+### Google App Engine
+
 ```sh
 # To deploy app configuration
 gcloud init
@@ -80,7 +95,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 -   https://leetcode.com/problems/sudoku-solver/
 -   https://leetcode.com/problems/valid-sudoku/
-
-```
-
-```
