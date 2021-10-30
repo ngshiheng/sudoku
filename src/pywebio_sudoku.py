@@ -13,15 +13,26 @@ class PyWebIOSudoku(Sudoku):
         super().__init__(grid)
 
         self.pywebio_grid = copy.deepcopy(self.grid)
+        self.__init_pywebio_grid()
 
+    def __init_pywebio_grid(self) -> None:
+        """Updates each individual cell to be of type Output"""
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
                 if self.pywebio_grid[i][j] == self.BLANK_CELL:
-                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:red; font-weight: bold')")
+                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:red; font-weight:bold')")
                 else:
-                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'font-weight: bold')")
+                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:black; font-weight:bold')")
 
                 exec(f"self.pywebio_grid[{i}][{j}] = self.grid_{i}{j}")
+
+    def __reset_pywebio_grid(self) -> None:
+        for i in range(self.GRID_SIZE):
+            for j in range(self.GRID_SIZE):
+                if self.grid[i][j] == self.BLANK_CELL:
+                    exec(f"self.grid_{i}{j}.reset(style(output(self.grid[i][j]), 'color:red; font-weight:bold'))")
+                else:
+                    exec(f"self.grid_{i}{j}.reset(style(output(self.grid[i][j]), 'color:black; font-weight:bold'))")
 
     def display_grid(self) -> None:
         """Displays the current state of the Sudoku grid to the browser"""
@@ -30,20 +41,12 @@ class PyWebIOSudoku(Sudoku):
     def generate_grid(self) -> None:
         """Overrides the current grid with a brand new valid Sudoku grid"""
         super().generate_grid()
-
-        self.pywebio_grid = copy.deepcopy(self.grid)
-
-        for i in range(self.GRID_SIZE):
-            for j in range(self.GRID_SIZE):
-                exec(f"self.grid_{i}{j}.reset(self.grid[i][j])")
+        self.__reset_pywebio_grid()
 
     def reset_grid(self) -> None:
         """Resets the current grid to its original state"""
         super().reset_grid()
-
-        for i in range(self.GRID_SIZE):
-            for j in range(self.GRID_SIZE):
-                exec(f"self.grid_{i}{j}.reset(self.grid[i][j])")
+        self.__reset_pywebio_grid()
 
     def _backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function to help solve the Sudoku
@@ -71,7 +74,7 @@ class PyWebIOSudoku(Sudoku):
                 self.row_checker[i].add(digit)
                 self.col_checker[j].add(digit)
                 self.subgrid_checker[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
-                exec(f"self.grid_{i}{j}.reset({digit})")
+                exec(f"self.grid_{i}{j}.reset(style(output({digit}), 'color:red; font-weight:bold'))")
 
                 if self._backtrack(i, j):
                     return True
