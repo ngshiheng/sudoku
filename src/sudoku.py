@@ -69,12 +69,12 @@ class Sudoku:
 
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
-                if self.grid[i][j] == self.BLANK_CELL and self._backtrack(i, j):
+                if self.grid[i][j] == self.BLANK_CELL and self.__backtrack(i, j):
                     return self.grid
 
         raise ValueError("Unable to solve Sudoku puzzle")
 
-    def _backtrack(self, i: int, j: int) -> bool:
+    def __backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function to help solve the Sudoku"""
         if self.grid[i][j] != self.BLANK_CELL:
             j += 1
@@ -85,16 +85,20 @@ class Sudoku:
             if i == self.GRID_SIZE:
                 return True
 
-            return self._backtrack(i, j)
+            return self.__backtrack(i, j)
 
         for digit in range(1, self.GRID_SIZE + 1):
-            if digit not in self.row_check[i] and digit not in self.col_check[j] and digit not in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE]:
+            if all([
+                digit not in self.row_check[i],
+                digit not in self.col_check[j],
+                digit not in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE],
+            ]):
                 self.grid[i][j] = digit
                 self.row_check[i].add(digit)
                 self.col_check[j].add(digit)
                 self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
 
-                if self._backtrack(i, j):
+                if self.__backtrack(i, j):
                     return True
 
                 self.grid[i][j] = self.BLANK_CELL
@@ -134,7 +138,7 @@ class PyWebIOSudoku(Sudoku):
 
         return self.grid
 
-    def _backtrack(self, i: int, j: int) -> bool:
+    def __backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function to help solve the Sudoku
 
         This private method mutates and displays the state change of PyWebIO table on the browser
@@ -148,17 +152,21 @@ class PyWebIOSudoku(Sudoku):
             if i == self.GRID_SIZE:
                 return True
 
-            return self._backtrack(i, j)
+            return self.__backtrack(i, j)
 
         for digit in range(1, self.GRID_SIZE + 1):
-            if digit not in self.row_check[i] and digit not in self.col_check[j] and digit not in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE]:
+            if all([
+                digit not in self.row_check[i],
+                digit not in self.col_check[j],
+                digit not in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE],
+            ]):
                 self.grid[i][j] = digit
                 self.row_check[i].add(digit)
                 self.col_check[j].add(digit)
                 self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
                 exec(f"self.grid_{i}{j}.reset({digit})")
 
-                if self._backtrack(i, j):
+                if self.__backtrack(i, j):
                     return True
 
                 self.grid[i][j] = self.BLANK_CELL
