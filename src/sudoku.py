@@ -36,10 +36,6 @@ class Sudoku:
         self.subgrid_check = [[set() for _ in range(self.SUBGRID_SIZE)] for _ in range(self.SUBGRID_SIZE)]
         return self.grid
 
-    def generate_grid(self) -> None:
-        """Generates a random valid Sudoku grid"""
-        raise NotImplementedError
-
     def validate_grid(self) -> bool:
         """Validates a Sudoku grid"""
         for i in range(self.GRID_SIZE):

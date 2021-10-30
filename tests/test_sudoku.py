@@ -1,6 +1,7 @@
 import unittest
 
 from src.sudoku import Sudoku
+from src.utils import generate_sudoku_grid
 
 
 class TestSudoku(unittest.TestCase):
@@ -157,3 +158,9 @@ class TestSudoku(unittest.TestCase):
             sudoku.reset_grid()
             sudoku.solve_grid()
             self.assertListEqual(sudoku.grid, grid["expected"])
+
+    def test_generate_grid_only_generates_valid_grid(self) -> None:
+        generated_grid = generate_sudoku_grid()
+        sudoku = Sudoku(generated_grid)
+        got = sudoku.validate_grid()
+        self.assertTrue(got)
