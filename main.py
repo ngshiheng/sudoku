@@ -1,6 +1,6 @@
 from pywebio.output import put_buttons, put_markdown
 
-from src.sudoku import PyWebIOSudoku
+from src.pywebio_sudoku import PyWebIOSudoku
 
 INTRODUCTION = r"""
 # Sudoku, 数独
@@ -49,27 +49,19 @@ A move is **incorrect** if:
 def main():
     """Sudoku Solver"""
     put_markdown(INTRODUCTION)
-    grid = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-        [0, 9, 8, 0, 0, 0, 0, 6, 0],
-        [8, 0, 0, 0, 6, 0, 0, 0, 3],
-        [4, 0, 0, 8, 0, 3, 0, 0, 1],
-        [7, 0, 0, 0, 2, 0, 0, 0, 6],
-        [0, 6, 0, 0, 0, 0, 2, 8, 0],
-        [0, 0, 0, 4, 1, 9, 0, 0, 5],
-        [0, 0, 0, 0, 8, 0, 0, 7, 9],
-    ]
-    sudoku = PyWebIOSudoku(grid)
-    sudoku.show_grid()
+
+    sudoku = PyWebIOSudoku()
+    sudoku.display_grid()
 
     put_buttons(
         [
             dict(label="Solve", value="Solve", color="primary"),
-            dict(label="Reset", value="Reset", color="warning"),
+            dict(label="Clear", value="Clear", color="warning"),
+            dict(label="Next Puzzle", value="Next Puzzle", color="secondary"),
         ], onclick=[
             sudoku.solve_grid,
             sudoku.reset_grid,
+            sudoku.generate_grid,
         ],
     )
 

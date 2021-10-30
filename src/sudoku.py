@@ -96,11 +96,11 @@ class Sudoku:
 
     def generate_grid(self) -> None:
         """Overrides the current grid with a brand new valid Sudoku grid"""
-        new_grid = self.__generate_grid()
+        self.new_grid = self.__generate_grid()
 
         self.__init_checkers()
-        self.grid = copy.deepcopy(new_grid)
-        self.original_grid = copy.deepcopy(new_grid)
+        self.grid = copy.deepcopy(self.new_grid)
+        self.original_grid = copy.deepcopy(self.new_grid)
 
     def reset_grid(self) -> None:
         """Resets the current grid to its original state"""
@@ -113,12 +113,12 @@ class Sudoku:
 
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
-                if self.grid[i][j] == self.BLANK_CELL and self.__backtrack(i, j):
+                if self.grid[i][j] == self.BLANK_CELL and self._backtrack(i, j):
                     return self.grid
 
         raise ValueError("Unable to solve Sudoku puzzle, are you sure that the puzzle is valid?")
 
-    def __backtrack(self, i: int, j: int) -> bool:
+    def _backtrack(self, i: int, j: int) -> bool:
         """A backtracking helper function to help solve the Sudoku puzzle"""
         if self.grid[i][j] != self.BLANK_CELL:
             j += 1
@@ -129,7 +129,7 @@ class Sudoku:
             if i == self.GRID_SIZE:
                 return True
 
-            return self.__backtrack(i, j)
+            return self._backtrack(i, j)
 
         for digit in range(1, self.GRID_SIZE + 1):
             if all([
@@ -142,7 +142,7 @@ class Sudoku:
                 self.col_checker[j].add(digit)
                 self.subgrid_checker[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
 
-                if self.__backtrack(i, j):
+                if self._backtrack(i, j):
                     return True
 
                 self.grid[i][j] = self.BLANK_CELL
