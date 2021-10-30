@@ -151,3 +151,16 @@ class TestSudoku(unittest.TestCase):
             sudoku.reset_grid()
             sudoku.solve_grid()
             self.assertListEqual(sudoku.grid, grid["expected"])
+
+    def test_generate_grid(self) -> None:
+        for grid in self.grid_test_cases[:2]:
+            sudoku = Sudoku(grid["given"])
+            self.assertListEqual(sudoku.grid, grid["given"])
+
+            sudoku.solve_grid()
+            self.assertListEqual(sudoku.grid, grid["expected"])
+
+            sudoku.generate_grid()
+            self.assertNotEqual(sudoku.grid, grid["given"])
+
+            sudoku.solve_grid()

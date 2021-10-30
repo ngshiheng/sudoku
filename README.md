@@ -8,6 +8,15 @@
 
 <br />
 
+> The motivation is to demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works.
+
+Some of the key highlights of this app:
+
+-   Ability to generate a random valid Sudoku puzzle
+-   Solves a Sudoku puzzle using backtracking
+-   Able to validate if a Sudoku board is valid
+-   Hosted using Google App Engine
+
 ## Development
 
 ### Installation
