@@ -56,9 +56,9 @@ class Sudoku:
                     return False
                 self.col_check[j].add(digit)
 
-                if digit in self.subgrid_check[i // 3][j // 3]:
+                if digit in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE]:
                     return False
-                self.subgrid_check[i // 3][j // 3].add(digit)
+                self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
 
         return True
 
@@ -88,11 +88,11 @@ class Sudoku:
             return self._backtrack(i, j)
 
         for digit in range(1, self.GRID_SIZE + 1):
-            if digit not in self.row_check[i] and digit not in self.col_check[j] and digit not in self.subgrid_check[i // 3][j // 3]:
+            if digit not in self.row_check[i] and digit not in self.col_check[j] and digit not in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE]:
                 self.grid[i][j] = digit
                 self.row_check[i].add(digit)
                 self.col_check[j].add(digit)
-                self.subgrid_check[i // 3][j // 3].add(digit)
+                self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
 
                 if self._backtrack(i, j):
                     return True
@@ -100,7 +100,7 @@ class Sudoku:
                 self.grid[i][j] = self.BLANK_CELL
                 self.row_check[i].remove(digit)
                 self.col_check[j].remove(digit)
-                self.subgrid_check[i // 3][j // 3].remove(digit)
+                self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].remove(digit)
 
         return False
 
@@ -151,11 +151,11 @@ class PyWebIOSudoku(Sudoku):
             return self._backtrack(i, j)
 
         for digit in range(1, self.GRID_SIZE + 1):
-            if digit not in self.row_check[i] and digit not in self.col_check[j] and digit not in self.subgrid_check[i // 3][j // 3]:
+            if digit not in self.row_check[i] and digit not in self.col_check[j] and digit not in self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE]:
                 self.grid[i][j] = digit
                 self.row_check[i].add(digit)
                 self.col_check[j].add(digit)
-                self.subgrid_check[i // 3][j // 3].add(digit)
+                self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
                 exec(f"self.grid_{i}{j}.reset({digit})")
 
                 if self._backtrack(i, j):
@@ -164,7 +164,7 @@ class PyWebIOSudoku(Sudoku):
                 self.grid[i][j] = self.BLANK_CELL
                 self.row_check[i].remove(digit)
                 self.col_check[j].remove(digit)
-                self.subgrid_check[i // 3][j // 3].remove(digit)
+                self.subgrid_check[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].remove(digit)
                 exec(f"self.grid_{i}{j}.reset(0)")
 
         return False
