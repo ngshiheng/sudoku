@@ -3,18 +3,18 @@
 </h3>
 
 <p align="center">
-  <img width=auto height=auto src="https://media.giphy.com/media/ZJFVjMIFiY9VC5UAom/giphy.gif">
+  <img width=auto height=auto src="https://media.giphy.com/media/AmEh0Bo8B1XQ7869i1/giphy.gif">
 </p>
 
 <br />
 
 > The motivation is to demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works.
 
-Some of the key highlights of this app:
+Some of the key highlights of this Sudoku solver app:
 
 -   Ability to generate a random valid Sudoku puzzle
 -   Solves a Sudoku puzzle using backtracking
--   Able to validate if a Sudoku board is valid
+-   Able to validate if a Sudoku board
 -   Hosted using Google App Engine
 
 ## Development
@@ -26,10 +26,10 @@ Make sure you have [poetry](https://python-poetry.org/docs/#installation) instal
 ```sh
 poetry install
 
-# Installing dependencies only
+# Optional: Installing dependencies only
 poetry install --no-root
 
-# Updating dependencies to their latest versions
+# Optional: Updating dependencies to their latest versions
 poetry update
 ```
 
@@ -47,13 +47,13 @@ Some example useful invocations:
 
 ## Usage
 
-To run locally on your browser:
+To run on debug mode locally on your browser:
 
 ```sh
 poetry run python3 main.py --debug=True --port=8080
 ```
 
-Then, visit `http://localhost:8080` on your browser.
+Then, visit `http://localhost:8080/` on your browser.
 
 ---
 
@@ -79,7 +79,7 @@ poetry export -f requirements.txt --output requirements.txt
 gcloud init
 gcloud app deploy app.yml --project xxx
 
-# To stream logs
+# Optional: To stream logs
 gcloud app logs tail -s default
 ```
 

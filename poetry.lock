@@ -40,7 +40,7 @@ python-versions = "*"
 
 [[package]]
 name = "filelock"
-version = "3.3.1"
+version = "3.3.2"
 description = "A platform independent file lock."
 category = "dev"
 optional = false
@@ -65,7 +65,7 @@ pyflakes = ">=2.4.0,<2.5.0"
 
 [[package]]
 name = "identify"
-version = "2.3.1"
+version = "2.3.2"
 description = "File identification library for Python"
 category = "dev"
 optional = false
@@ -247,16 +247,16 @@ distlib = [
     {file = "distlib-0.3.3.zip", hash = "sha256:d982d0751ff6eaaab5e2ec8e691d949ee80eddf01a62eaa96ddb11531fe16b05"},
 ]
 filelock = [
-    {file = "filelock-3.3.1-py3-none-any.whl", hash = "sha256:2b5eb3589e7fdda14599e7eb1a50e09b4cc14f34ed98b8ba56d33bfaafcbef2f"},
-    {file = "filelock-3.3.1.tar.gz", hash = "sha256:34a9f35f95c441e7b38209775d6e0337f9a3759f3565f6c5798f19618527c76f"},
+    {file = "filelock-3.3.2-py3-none-any.whl", hash = "sha256:bb2a1c717df74c48a2d00ed625e5a66f8572a3a30baacb7657add1d7bac4097b"},
+    {file = "filelock-3.3.2.tar.gz", hash = "sha256:7afc856f74fa7006a289fd10fa840e1eebd8bbff6bffb69c26c54a0512ea8cf8"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
     {file = "flake8-4.0.1.tar.gz", hash = "sha256:806e034dda44114815e23c16ef92f95c91e4c71100ff52813adf7132a6ad870d"},
 ]
 identify = [
-    {file = "identify-2.3.1-py2.py3-none-any.whl", hash = "sha256:5a5000bd3293950d992843c0ef3d82b90a582de2161557bda7f493c8c8864f26"},
-    {file = "identify-2.3.1.tar.gz", hash = "sha256:8a92c56893e9a4ce951f09a50489986615e3eba7b4c60610e0b25f93ca4487ba"},
+    {file = "identify-2.3.2-py2.py3-none-any.whl", hash = "sha256:2f24d420bfde0352f3b44b9aa0ee72930c3c29d4ae25f1be34af4bf4c13dc890"},
+    {file = "identify-2.3.2.tar.gz", hash = "sha256:13f90b8813bcb88d47faf5015fd606545b9677938505622bb155c5c4e94529ba"},
 ]
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
