@@ -74,7 +74,7 @@ class PyWebIOSudoku(Sudoku):
                 self.row_checker[i].add(digit)
                 self.col_checker[j].add(digit)
                 self.subgrid_checker[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].add(digit)
-                exec(f"self.grid_{i}{j}.reset(style(output({digit}), 'color:red; font-weight:bold'))")
+                exec(f"self.grid_{i}{j}.reset(style(output({digit}), 'color:blue; font-weight:bold'))")
 
                 if self._backtrack(i, j):
                     return True
