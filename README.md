@@ -12,12 +12,12 @@
 
 Some of the key highlights of this Sudoku solver app:
 
--   Ability to generate a random valid Sudoku puzzle
+-   Ability to generate a random, valid Sudoku puzzle
 -   Solves a Sudoku puzzle using backtracking
--   Able to validate if a Sudoku board
--   Hosted using Google App Engine
+-   Able to check if a Sudoku board is valid
+-   A demo is hosted on [Heroku](https://pywebio-sudoku.herokuapp.com/)
 
-## Development
+## Getting Started
 
 ### Installation
 
@@ -33,19 +33,7 @@ poetry install --no-root
 poetry update
 ```
 
-### Setup Pre-commit Hooks
-
-Before you begin your development work, make sure you have installed [pre-commit hooks](https://pre-commit.com/index.html#installation).
-
-Some example useful invocations:
-
--   `pre-commit install`: Default invocation. Installs the pre-commit script alongside any existing git hooks.
--   `pre-commit install --install-hooks --overwrite`: Idempotently replaces existing git hook scripts with pre-commit, and also installs hook environments.
--   `pre-commit run`: Run hooks.
-
----
-
-## Usage
+### Usage
 
 To run on debug mode locally on your browser:
 
@@ -55,7 +43,15 @@ poetry run python3 main.py --debug=True --port=8080
 
 Then, visit `http://localhost:8080/` on your browser.
 
----
+## Pre-commit Hooks
+
+Before you begin your development work, make sure you have installed [pre-commit hooks](https://pre-commit.com/index.html#installation).
+
+Some example useful invocations:
+
+-   `pre-commit install`: Default invocation. Installs the pre-commit script alongside any existing git hooks.
+-   `pre-commit install --install-hooks --overwrite`: Idempotently replaces existing git hook scripts with pre-commit, and also installs hook environments.
+-   `pre-commit run`: Run hooks.
 
 ## Deployment
 
@@ -67,8 +63,6 @@ To generate a [`requirements.txt`](./requirements.txt) file:
 # This command exports the poetry lock file to other formats.
 poetry export -f requirements.txt --output requirements.txt
 ```
-
----
 
 ## Contributing
 
@@ -82,8 +76,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 4. Commit your changes (git commit -am 'Add some fooBar')
 5. Push to the branch (git push origin feature/fooBar)
 6. Create a new Pull Request
-
----
 
 ## References
 
