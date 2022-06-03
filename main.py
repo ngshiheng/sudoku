@@ -3,22 +3,17 @@ from pywebio.output import put_buttons, put_markdown
 from src.pywebio_sudoku import PyWebIOSudoku
 
 INTRODUCTION = r"""
-# Sudoku, 数独
-
-A popular Japanese puzzle game based on the logical placement of digits.
-
-Sudoku doesn’t require any calculation nor special math skills.
+# PyWebIO Sudoku Solver
 
 ## Motivation
 
-To demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works, visually. You may find the source code [here](https://github.com/ngshiheng/sudoku).
+To demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works with Sudoku, visually. You may find the source code [here](https://github.com/ngshiheng/sudoku).
 
 ## Demo
-
 """
 
 DETAILS = r"""
-## Approach
+### Rationale
 
 - Before assigning a digit to a cell, we should check whether it is safe to assign.
 - Check that the same digit is not present in the current row, current column, and current 3x3 subgrid.
@@ -27,7 +22,14 @@ DETAILS = r"""
 - And if none of the digits (1 to 9) leads to a solution, return `False`.
 - We return `True` if we have reached gone through the entire grid.
 
-## How to play
+## Sudoku, 数独
+
+A popular Japanese puzzle game based on the logical placement of digits.
+
+Sudoku doesn’t require any calculation nor special math skills.
+
+
+### How to play
 
 The goal of Sudoku is to fill in a 9×9 grid with digits so that each column, row, and 3×3 section contain the digits between 1 to 9.
 
@@ -35,14 +37,13 @@ At the beginning of the game, the 9×9 grid will have some of the squares filled
 
 Your job is to use logic to fill in the missing digits and complete the grid.
 
-## Rules
+### Rules
 
 A move is **incorrect** if:
 
 - Any row contains more than one of the same digit from 1 to 9
 - Any column contains more than one of the same digit from 1 to 9
 - Any 3×3 grid contains more than one of the same digit from 1 to 9
-
 """
 
 
