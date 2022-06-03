@@ -20,9 +20,9 @@ class PyWebIOSudoku(Sudoku):
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
                 if self.pywebio_grid[i][j] == self.BLANK_CELL:
-                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:red; font-weight:bold')")
+                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:transparent')")
                 else:
-                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:black; font-weight:bold')")
+                    exec(f"self.grid_{i}{j} = style(output(self.grid[i][j]), 'color:black')")
 
                 exec(f"self.pywebio_grid[{i}][{j}] = self.grid_{i}{j}")
 
@@ -30,9 +30,9 @@ class PyWebIOSudoku(Sudoku):
         for i in range(self.GRID_SIZE):
             for j in range(self.GRID_SIZE):
                 if self.grid[i][j] == self.BLANK_CELL:
-                    exec(f"self.grid_{i}{j}.reset(style(output(self.grid[i][j]), 'color:red; font-weight:bold'))")
+                    exec(f"self.grid_{i}{j}.reset(style(output(self.grid[i][j]), 'color:transparent'))")
                 else:
-                    exec(f"self.grid_{i}{j}.reset(style(output(self.grid[i][j]), 'color:black; font-weight:bold'))")
+                    exec(f"self.grid_{i}{j}.reset(style(output(self.grid[i][j]), 'color:black'))")
 
     def display_grid(self) -> None:
         """Displays the current state of the Sudoku grid to the browser"""
@@ -83,6 +83,6 @@ class PyWebIOSudoku(Sudoku):
                 self.row_checker[i].remove(digit)
                 self.col_checker[j].remove(digit)
                 self.subgrid_checker[i // self.SUBGRID_SIZE][j // self.SUBGRID_SIZE].remove(digit)
-                exec(f"self.grid_{i}{j}.reset(0)")
+                exec(f"self.grid_{i}{j}.reset(0), 'color:transparent'")
 
         return False
