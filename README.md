@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Sudoku Solver</strong></h1>
+<h1 align="center"><strong>A Sudoku Solver</strong></h1>
 <h3 align="center">A web-based Sudoku solver built using Python and Python only
 </h3>
 
@@ -59,28 +59,13 @@ Then, visit `http://localhost:8080/` on your browser.
 
 ## Deployment
 
-This section is only required if you intend to deploy to [GAE](https://cloud.google.com/appengine).
+Check [this](https://github.com/wang0618/pywebio-in-cloud) out.
 
-For reference, do check [this](https://github.com/wang0618/pywebio-in-cloud) out.
-
-### Dependencies
-
-Configure all dependencies you will need for your web service in your `requirements.txt` file.
+To generate a [`requirements.txt`](./requirements.txt) file:
 
 ```sh
 # This command exports the poetry lock file to other formats.
 poetry export -f requirements.txt --output requirements.txt
-```
-
-### Google App Engine
-
-```sh
-# To deploy app configuration
-gcloud init
-gcloud app deploy app.yml --project xxx
-
-# Optional: To stream logs
-gcloud app logs tail -s default
 ```
 
 ---
