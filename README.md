@@ -1,4 +1,4 @@
-<h1 align="center"><strong>PyWebIO Sudoku Solver</strong></h1>
+<h1 align="center"><strong>Sudoku</strong></h1>
 <h3 align="center">A web-based Sudoku solver built using Python and Python only
 </h3>
 
@@ -15,7 +15,7 @@ Some of the key highlights/features of this Sudoku solver app:
 -   Ability to generate a random, valid Sudoku puzzle
 -   Solves a Sudoku puzzle using backtracking
 -   Able to check if a Sudoku board is valid
--   Demo is hosted on [Heroku](https://pywebio-sudoku.herokuapp.com/)
+-   Demo is hosted on [Koyeb](https://sudoku-ngshiheng.koyeb.app/)
 
 ## Getting Started
 
