@@ -3,7 +3,9 @@ from pywebio.output import put_buttons, put_markdown
 from src.pywebio_sudoku import PyWebIOSudoku
 
 INTRODUCTION = r"""
-# PyWebIO Sudoku Solver
+# Sudoku
+
+A web-based Sudoku solver built using Python and Python only.
 
 ## Motivation
 

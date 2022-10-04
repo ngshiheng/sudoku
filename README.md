@@ -24,6 +24,7 @@ Some of the key highlights/features of this Sudoku solver app:
 Make sure you have [poetry](https://python-poetry.org/docs/#installation) installed on your machine.
 
 ```sh
+# make install
 poetry install
 
 # Optional: Installing dependencies only
@@ -38,6 +39,7 @@ poetry update
 To run on debug mode locally on your browser:
 
 ```sh
+# make dev
 poetry run python3 main.py --debug=True --port=8080
 ```
 
@@ -61,6 +63,7 @@ To generate a [`requirements.txt`](./requirements.txt) file:
 
 ```sh
 # This command exports the poetry lock file to other formats.
+# make generate
 poetry export -f requirements.txt --output requirements.txt
 ```
 

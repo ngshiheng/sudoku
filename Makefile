@@ -13,6 +13,10 @@ install:	## install all dependencies
 	@if [ -z $(POETRY) ]; then echo "Poetry could not be found. See https://python-poetry.org/docs/"; exit 2; fi
 	@$(POETRY) install --no-root
 
+.PHONY: generate
+generate:	## export poetry lock file to requirements.txt
+	@$(POETRY) export -f requirements.txt --output requirements.txt
+
 .PHONY: lint
 lint:	## run flake8
 	@$(POETRY) run flake8 --statistics --ignore=W503,E501 --show-source
