@@ -1,5 +1,5 @@
-pywebio==1.6.3; python_full_version >= "3.5.2" \
-    --hash=sha256:710de457350541e6d8a2c51dc3b139dbd429144a65a00b6f4bd25149bed6b787
+pywebio==1.7.0; python_full_version >= "3.5.2" \
+    --hash=sha256:53d0d684a4b45177e0ab7d4c0f60820b1aa763870bd9a11b0ac163409459e8c1
 tornado==6.2; python_version >= "3.7" and python_full_version >= "3.5.2" \
     --hash=sha256:20f638fd8cc85f3cbae3c732326e96addff0a15e22d80f049e00121651e82e72 \
     --hash=sha256:87dcafae3e884462f90c90ecc200defe5e580a7fbbb4365eda7c7c1eb809ebc9 \
