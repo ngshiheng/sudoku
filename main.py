@@ -98,5 +98,9 @@ if __name__ == "__main__":
         start_http_server(main, port=args.port, debug=args.debug)
     else:
         start_ws_server(
-            main, port=args.port, websocket_ping_interval=30, debug=args.debug
+            main,
+            port=args.port,
+            websocket_ping_interval=30,  # seconds
+            debug=args.debug,
+            reconnect_timeout=60,  # seconds
         )
