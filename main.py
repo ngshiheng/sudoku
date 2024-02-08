@@ -5,11 +5,11 @@ from src.pywebio_sudoku import PyWebIOSudoku
 INTRODUCTION = r"""
 # Sudoku
 
-A web-based Sudoku solver built using Python and Python only.
+A web-based Sudoku solver built using Python and Python only. You may find the source code on [GitHub](https://github.com/ngshiheng/sudoku).
 
 ## Motivation
 
-To demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works with Sudoku, visually. You may find the source code [here](https://github.com/ngshiheng/sudoku).
+To demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works with Sudoku, visually.
 
 ## Demo
 """
@@ -61,7 +61,8 @@ def main():
             dict(label="Solve", value="Solve", color="primary"),
             dict(label="Clear", value="Clear", color="warning"),
             dict(label="Next Puzzle", value="Next Puzzle", color="secondary"),
-        ], onclick=[
+        ],
+        onclick=[
             sudoku.solve_grid,
             sudoku.reset_grid,
             sudoku.generate_grid,
@@ -78,13 +79,24 @@ if __name__ == "__main__":
     from pywebio.platform.tornado_http import start_server as start_http_server
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--port", help='Run on the given port', type=int, default=8080)
-    parser.add_argument("-d", "--debug", help='Run on debug mode', type=bool, default=False)
-    parser.add_argument("--http", action="store_true", default=False, help='Whether to enable http protocol for communicates')
+    parser.add_argument(
+        "-p", "--port", help="Run on the given port", type=int, default=8080
+    )
+    parser.add_argument(
+        "-d", "--debug", help="Run on debug mode", type=bool, default=False
+    )
+    parser.add_argument(
+        "--http",
+        action="store_true",
+        default=False,
+        help="Whether to enable http protocol for communicates",
+    )
 
     args = parser.parse_args()
 
     if args.http:
         start_http_server(main, port=args.port, debug=args.debug)
     else:
-        start_ws_server(main, port=args.port, websocket_ping_interval=30, debug=args.debug)
+        start_ws_server(
+            main, port=args.port, websocket_ping_interval=30, debug=args.debug
+        )
