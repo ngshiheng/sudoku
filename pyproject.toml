@@ -6,7 +6,7 @@ name = "sudoku"
 version = "1.0.0"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 pywebio = "^1.4.0"
 
 [tool.poetry.dev-dependencies]
