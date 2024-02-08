@@ -3,19 +3,45 @@ from pywebio.output import put_buttons, put_markdown
 from src.pywebio_sudoku import PyWebIOSudoku
 
 INTRODUCTION = r"""
-# Sudoku
+# Sudoku ([数独](https://en.wikipedia.org/wiki/Sudoku)) Solver
 
 A web-based Sudoku solver built using Python and Python only. You may find the source code on [GitHub](https://github.com/ngshiheng/sudoku).
 
-## Motivation
-
-To demonstrate how [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works with Sudoku, visually.
+This project is made to demonstrate how the [Backtracking](https://en.wikipedia.org/wiki/Backtracking) algorithm works with [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/), visually.
 
 ## Demo
 """
 
 DETAILS = r"""
-### Rationale
+## Algorithm
+
+### Time Complexity
+
+The time complexity of the solution is **O(9^(n^2))** because each cell can have 9 choices (i.e. the branching factor of the search tree is 9).
+
+<details>
+<summary>Read more...</summary>
+
+For a standard 9x9 Sudoku puzzle like this, there are 81 cells to fill. In the worst case, each cell requires considering all 9 possibilities.
+
+Therefore, the time complexity of backtracking to solve a Sudoku puzzle is O(9^(n^2)), where n is the size of the puzzle (9 in this case)
+
+</details>
+
+### Space Complexity
+
+The space complexity of the solution is **O(1)** because we are using a fixed-size 9x9 grid.
+
+<details>
+<summary>Read more...</summary>
+
+We typically use a 2D array or a matrix to represent the puzzle grid. This requires O(n^2) space, where n is the size of the puzzle (9 in this case).
+
+During the backtracking search, we often use recursive function calls to explore the solution space. The space complexity of the recursive call stack is O(n^2) in the worst case, where each cell of the puzzle is filled recursively
+
+</details>
+
+### How it works
 
 - Before assigning a digit to a cell, we should check whether it is safe to assign.
 - Check that the same digit is not present in the current row, current column, and current 3x3 subgrid.
@@ -24,14 +50,7 @@ DETAILS = r"""
 - And if none of the digits (1 to 9) leads to a solution, return `False`.
 - We return `True` if we have reached gone through the entire grid.
 
-## Sudoku, 数独
-
-A popular Japanese puzzle game based on the logical placement of digits.
-
-Sudoku doesn’t require any calculation nor special math skills.
-
-
-### How to play
+## How to play
 
 The goal of Sudoku is to fill in a 9×9 grid with digits so that each column, row, and 3×3 section contain the digits between 1 to 9.
 
